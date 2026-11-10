@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Unsafe File Upload — ЛР № 6</title>
+<meta name="description" content="Лабораторна робота № 6 «Безпека веб-додатків»: уразливості завантаження файлів, PortSwigger Web Security Academy.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Cpath d='M6 22c6-14 14 4 20-12' stroke='%23bbbbbb' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=Geologica:wght@300..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="viewport">
+  <div class="stage" id="stage">
+    <main id="deck" aria-live="polite"></main>
+
+    <header class="chrome-top">
+      <button class="brand" data-go="0" aria-label="На початок">
+        <svg class="brand-wave" viewBox="0 0 40 16" aria-hidden="true"><path d="M2 13C10-3 18 19 26 5s10 4 12 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="brand-t">Access/Ctrl</span>
+      </button>
+      <div class="now" aria-hidden="true"><span id="nowLabel"></span></div>
+    </header>
+
+    <footer class="chrome-bot">
+      <div class="counter mono"><span class="roll" id="cnt">01</span><span class="of">/ <b id="tot">00</b></span></div>
+      <div class="ticks" id="ticks" aria-hidden="true"></div>
+    </footer>
+
+    <nav class="menu" id="menu" aria-label="Зміст" hidden>
+      <div class="menu-head">
+        <span class="eyebrow">Зміст презентації</span>
+        <button class="round-btn" id="menuClose" aria-label="Закрити"><svg viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+      </div>
+      <ol class="menu-list" id="menuList"></ol>
+    </nav>
+  </div>
+</div>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Скріншот" hidden>
+  <img id="lbImg" alt="">
+  <div class="lb-cap mono" id="lbCap"></div>
+  <button class="round-btn lb-close" id="lbClose" aria-label="Закрити"><svg viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+</div>
+
+
+<div class="pre" id="pre" aria-hidden="true">
+  <div class="pre-in">
+    <span class="pre-k mono">ЛР № 6 — Безпека веб-додатків</span>
+    <span class="pre-n" id="preN">0</span>
+  </div>
+  <div class="pre-bar"><i id="preBar"></i></div>
+</div>
+
+<noscript><p style="padding:40px;color:#fff;position:relative">Для перегляду презентації увімкніть JavaScript.</p></noscript>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
